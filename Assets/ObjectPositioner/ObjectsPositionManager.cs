@@ -25,7 +25,7 @@ public class ObjectsPositionManager : MonoBehaviour
     Vector3 CalculatePosition(int index, int totalElements)
     {
         // Get the size of the prefab
-        Vector3 prefabSize = prefab.GetComponent<Renderer>().bounds.size;
+        Vector3 prefabSize = prefab.GetComponentInChildren<Renderer>().bounds.size;
 
         // Calculate spacing based on prefab size and multipliers
         float x = index * (prefabSize.x * horizontalSpacingMultiplier);
