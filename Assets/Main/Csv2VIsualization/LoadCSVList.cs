@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,8 +24,7 @@ public class LoadCSVList : MonoBehaviour
     private void LoadAllCSVFiles()
     {
         TextAsset[] csvFiles = Resources.LoadAll<TextAsset>("");
-
-        _allCSVFiles = new List<TextAsset>(csvFiles);
+        _allCSVFiles = new List<TextAsset>(csvFiles.Reverse().Skip(2)); // Patch: Skip two irrelevant TextAssets
 
         List<TMP_Dropdown.OptionData> options = new();
 
@@ -34,6 +34,7 @@ public class LoadCSVList : MonoBehaviour
             {
                 continue;
             }
+            Debug.Log(file.name);
             options.Add(new TMP_Dropdown.OptionData(file.name));
         }
         
@@ -43,6 +44,6 @@ public class LoadCSVList : MonoBehaviour
     private void CSVFileSelect(int fileIndex)
     {
         Debug.Log($"in CSVFileSelect with {fileIndex}");
-        _treeVisualizer.BuildFromCSV(_allCSVFiles[fileIndex].name);
+        _treeVisualizer.BuildFromCSV(_allCSVFiles[fileIndex - 1].name); // 0 Is the placeholder option
     }
 }
