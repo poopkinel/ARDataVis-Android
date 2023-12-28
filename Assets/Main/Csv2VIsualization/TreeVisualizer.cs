@@ -4,18 +4,18 @@ using TMPro;
 
 public class TreeVisualizer : MonoBehaviour
 {
-    public GameObject nodePrefab;
-    public Material lineMaterial;
-    private TreeNode rootNode;
+    [SerializeField]
+    private GameObject _nodePrefab;
 
-    public float horizontalSpacing = 0.25f;
-    public float verticalSpacing = 0.25f;
+    [SerializeField]
+    private Material _lineMaterial;
+
+    private TreeNode _rootNode;
 
     public void BuildFromCSV(string csvFileName)
     {
-        Debug.Log($"BuildFromCSV(string csvFileName): {csvFileName}");
-        rootNode = new TreeBuilder().BuildTreeFromCSV(csvFileName);
-        VisualizeTree(rootNode, Vector3.zero, 1);
+        _rootNode = new TreeBuilder().BuildTreeFromCSV(csvFileName);
+        VisualizeTree(_rootNode, Vector3.zero, 1);
     }
 
     void VisualizeTree(TreeNode node, Vector3 position, int depth)
@@ -23,7 +23,7 @@ public class TreeVisualizer : MonoBehaviour
         bool isRoot = node.Name == "Root"; // Skip root node
 
         // Create a GameObject for this node
-        GameObject nodeObj = Instantiate(nodePrefab, position, Quaternion.identity);
+        GameObject nodeObj = Instantiate(_nodePrefab, position, Quaternion.identity);
         nodeObj.name = node.Name;
         nodeObj.GetComponentInChildren<TMP_Text>().text = node.Name;
 
@@ -60,7 +60,7 @@ public class TreeVisualizer : MonoBehaviour
     void DrawLine(GameObject startObj, Vector3 endPosition)
     {
         LineRenderer lineRenderer = new GameObject("Line").AddComponent<LineRenderer>();
-        lineRenderer.material = lineMaterial;
+        lineRenderer.material = _lineMaterial;
         lineRenderer.startWidth = 0.05f;
         lineRenderer.endWidth = 0.05f;
         lineRenderer.SetPosition(0, startObj.transform.position);

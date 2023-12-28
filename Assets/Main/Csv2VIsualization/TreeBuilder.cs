@@ -7,7 +7,7 @@ public class TreeBuilder
 
     public TreeBuilder()
     {
-        _root = new TreeNode("Root"); // Assuming a single root for the tree
+        _root = new TreeNode("Root", null); // Assuming a single root for the tree
     }
 
     public TreeNode BuildTreeFromCSV(string fileName)

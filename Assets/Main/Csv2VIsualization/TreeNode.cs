@@ -3,25 +3,26 @@ using System.Linq;
 
 public class TreeNode
 {
-    public string Name;
-    public TreeNode Parent;
-    public List<TreeNode> Children;
+    private string _name;
+    private TreeNode _parent;
+    private List<TreeNode> _children;
 
-    public TreeNode(string name)
+    public TreeNode(string name, TreeNode parent)
     {
-        this.Name = name;
-        this.Children = new List<TreeNode>();
+        _name = name;
+        _parent = parent;
+        _children = new List<TreeNode>();
     }
 
     public TreeNode FindChild(string name)
     {
-        return Children.FirstOrDefault(child => child.Name == name);
+        return _children.FirstOrDefault(child => child._name == name);
     }
 
     public TreeNode AddChild(string name)
     {
-        var childNode = new TreeNode(name) { Parent = this };
-        Children.Add(childNode);
+        var childNode = new TreeNode(name, this);
+        _children.Add(childNode);
         return childNode;
     }
 
@@ -31,9 +32,13 @@ public class TreeNode
         var currentNode = this;
         while (currentNode != null)
         {
-            path.Insert(0, currentNode.Name);
-            currentNode = currentNode.Parent;
+            path.Insert(0, currentNode._name);
+            currentNode = currentNode._parent;
         }
         return path;
     }
+
+    public string Name => _name;
+
+    public List<TreeNode> Children => _children;
 }

@@ -43,7 +43,6 @@ public class LoadCSVList : MonoBehaviour
 
     private void CSVFileSelect(int fileIndex)
     {
-        Debug.Log($"in CSVFileSelect with {fileIndex}");
         _treeVisualizer.BuildFromCSV(_allCSVFiles[fileIndex - 1].name); // 0 Is the placeholder option
     }
 }
