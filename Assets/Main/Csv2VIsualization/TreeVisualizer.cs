@@ -47,19 +47,12 @@ public class TreeVisualizer : MonoBehaviour
 
     Vector3 CalculateChildPosition(Vector3 parentPosition, int depth, int index, int totalChildren, TreeNode parentNode)
     {
-        float depthSpacing = 0.75f; // Increases the spacing with depth
+        float depthSpacing = 2f; // Increases the spacing with depth
         float siblingSpacing = 0.5f; // Spacing between nodes with the same parent
-        float parentSpacing = depth * 0.5f; // Spacing based on the parent's position
 
-        // Calculate angular spread based on depth and total children
-        float angleDelta = 360.0f / Mathf.Max(totalChildren, parentNode.Parent != null ? parentNode.Parent.Children.Count : 1);
-        float angle = angleDelta * index * Mathf.Deg2Rad; // Convert angle to radians
-
-        // Position calculation using spherical coordinates
-        float radius = depthSpacing * depth + parentSpacing;
         float x = parentPosition.x + index * depthSpacing; // Horizontal positioing
         float y = parentPosition.y - (depth * siblingSpacing); // Vertical positioning
-        float z = parentPosition.z + radius * Mathf.Cos(angle);
+        float z = parentPosition.z + depth * index; // Depth positioning
 
         return new Vector3(x, y, z);
     }
