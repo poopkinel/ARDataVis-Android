@@ -1011,10 +1011,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01fd9e1158f4094459d8e1ab6883074f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nodePrefab: {fileID: 6762260029877710093, guid: 0bb3e27eb56cb044ebf25842c07a9a3c, type: 3}
-  lineMaterial: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
-  horizontalSpacing: 0.5
-  verticalSpacing: 0.5
+  _nodePrefab: {fileID: 1397447009035855215, guid: c03441b9e9ea9f14caa0a8411387424e, type: 3}
+  _lineMaterial: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!1 &2136667110
 GameObject:
   m_ObjectHideFlags: 0

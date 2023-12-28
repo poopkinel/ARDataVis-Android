@@ -18,7 +18,6 @@ GameObject:
   - component: {fileID: 4115845886461680950}
   - component: {fileID: 7746527045050393024}
   - component: {fileID: 3154534869668991624}
-  - component: {fileID: 5097003352269282163}
   - component: {fileID: 1248615102760336497}
   m_Layer: 0
   m_Name: VisObject
@@ -43,7 +42,7 @@ Transform:
   - {fileID: 1441294939095284614}
   - {fileID: 7678874714831620845}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1542116737777918340
 BoxCollider:
@@ -343,20 +342,6 @@ MonoBehaviour:
   autoConstraintSelection: 0
   selectedConstraints:
   - {fileID: 1726242871486130621}
---- !u!114 &5097003352269282163
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1397447009035855215}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee977e4d026d200429947f640641a86e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nodePrefab: {fileID: 1397447009035855215}
-  lineMaterial: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!114 &1248615102760336497
 MonoBehaviour:
   m_ObjectHideFlags: 0
