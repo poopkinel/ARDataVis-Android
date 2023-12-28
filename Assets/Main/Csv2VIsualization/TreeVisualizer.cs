@@ -52,7 +52,7 @@ public class TreeVisualizer : MonoBehaviour
 
         float x = parentPosition.x + index * depthSpacing; // Horizontal positioing
         float y = parentPosition.y - (depth * siblingSpacing); // Vertical positioning
-        float z = parentPosition.z + depth * index; // Depth positioning
+        float z = parentPosition.z + depth * index * totalChildren; // Depth positioning
 
         return new Vector3(x, y, z);
     }
