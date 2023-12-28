@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using TMPro;
 
-public class TreeVisualizer : MonoBehaviour
+public class TreeVisualizer : MonoBehaviour, ITreeVisualizer
 {
     public GameObject nodePrefab; // Assign a prefab for the nodes
     public Material lineMaterial; // Material for the lines connecting nodes
@@ -13,11 +13,10 @@ public class TreeVisualizer : MonoBehaviour
     public float horizontalSpacing = 0.25f;
     public float verticalSpacing = 0.25f;
 
-    void Start()
+    public void BuildFromCSV(string csvFileName)
     {
         // Assume rootNode is already populated
-        rootNode = new TreeBuilder().BuildTreeFromCSV("ExampleData");
-        Debug.Log($"rootNode: {rootNode}");
+        rootNode = new TreeBuilder().BuildTreeFromCSV(csvFileName);
         VisualizeTree(rootNode, Vector3.zero, 1);
     }
 

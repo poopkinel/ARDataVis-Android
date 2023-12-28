@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 public class LoadCSVList : MonoBehaviour
 {
     [SerializeField]
     private TMP_Dropdown _dropDown;
+
+    [Inject]
+    private ITreeVisualizer _visualizer;
 
     private List<TextAsset> _allCSVFiles;
 
@@ -35,6 +39,6 @@ public class LoadCSVList : MonoBehaviour
 
     private void CSVFileSelect(int fileIndex)
     {
-        //BuildHierarchyFromCSV("ExampleData");
+        _visualizer.BuildFromCSV(_allCSVFiles[fileIndex].name);
     }
 }
