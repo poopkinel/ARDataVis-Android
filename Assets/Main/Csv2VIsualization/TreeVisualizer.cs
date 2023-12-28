@@ -2,20 +2,18 @@ using UnityEngine;
 using System.Collections.Generic;
 using TMPro;
 
-public class TreeVisualizer : MonoBehaviour, ITreeVisualizer
+public class TreeVisualizer : MonoBehaviour
 {
-    public GameObject nodePrefab; // Assign a prefab for the nodes
-    public Material lineMaterial; // Material for the lines connecting nodes
+    public GameObject nodePrefab;
+    public Material lineMaterial;
+    private TreeNode rootNode;
 
-    private TreeNode rootNode; // The root of your tree
-
-    // Adjust these values as needed
     public float horizontalSpacing = 0.25f;
     public float verticalSpacing = 0.25f;
 
     public void BuildFromCSV(string csvFileName)
     {
-        // Assume rootNode is already populated
+        Debug.Log($"BuildFromCSV(string csvFileName): {csvFileName}");
         rootNode = new TreeBuilder().BuildTreeFromCSV(csvFileName);
         VisualizeTree(rootNode, Vector3.zero, 1);
     }
@@ -34,8 +32,6 @@ public class TreeVisualizer : MonoBehaviour, ITreeVisualizer
             nodeObj.SetActive(false);
         }
 
-        // Optionally set some data or label on the nodeObj here
-
         // Visualize children
         for (int i = 0; i < node.Children.Count; i++)
         {
@@ -51,7 +47,6 @@ public class TreeVisualizer : MonoBehaviour, ITreeVisualizer
 
     Vector3 CalculateChildPosition(Vector3 parentPosition, int depth, int index, int totalChildren, TreeNode parentNode)
     {
-        // Adjust these multipliers to scale the spacing dynamically
         float depthSpacing = 0.75f; // Increases the spacing with depth
         float siblingSpacing = 0.5f; // Spacing between nodes with the same parent
         float parentSpacing = depth * 0.5f; // Spacing based on the parent's position
@@ -68,8 +63,6 @@ public class TreeVisualizer : MonoBehaviour, ITreeVisualizer
 
         return new Vector3(x, y, z);
     }
-
-
 
     void DrawLine(GameObject startObj, Vector3 endPosition)
     {

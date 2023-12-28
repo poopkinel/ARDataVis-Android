@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using Zenject;
 
 public class LoadCSVList : MonoBehaviour
 {
     [SerializeField]
     private TMP_Dropdown _dropDown;
 
-    [Inject]
-    private ITreeVisualizer _visualizer;
+    [SerializeField]
+    private TreeVisualizer _treeVisualizer;
 
     private List<TextAsset> _allCSVFiles;
 
@@ -31,6 +30,10 @@ public class LoadCSVList : MonoBehaviour
 
         foreach (var file in _allCSVFiles)
         {
+            if (string.IsNullOrWhiteSpace(file.name))
+            {
+                continue;
+            }
             options.Add(new TMP_Dropdown.OptionData(file.name));
         }
         
@@ -39,6 +42,7 @@ public class LoadCSVList : MonoBehaviour
 
     private void CSVFileSelect(int fileIndex)
     {
-        _visualizer.BuildFromCSV(_allCSVFiles[fileIndex].name);
+        Debug.Log($"in CSVFileSelect with {fileIndex}");
+        _treeVisualizer.BuildFromCSV(_allCSVFiles[fileIndex].name);
     }
 }
