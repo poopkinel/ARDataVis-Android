@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class LoadCSVList : MonoBehaviour
 {
     [SerializeField]
-    private Dropdown _dropDown;
+    private TMP_Dropdown _dropDown;
 
     private List<TextAsset> _allCSVFiles;
 
@@ -22,11 +23,11 @@ public class LoadCSVList : MonoBehaviour
 
         _allCSVFiles = new List<TextAsset>(csvFiles);
 
-        List<Dropdown.OptionData> options = new();
+        List<TMP_Dropdown.OptionData> options = new();
 
         foreach (var file in _allCSVFiles)
         {
-            options.Add(new Dropdown.OptionData(file.name));
+            options.Add(new TMP_Dropdown.OptionData(file.name));
         }
         
         _dropDown.AddOptions(options);
@@ -34,6 +35,6 @@ public class LoadCSVList : MonoBehaviour
 
     private void CSVFileSelect(int fileIndex)
     {
-
+        //BuildHierarchyFromCSV("ExampleData");
     }
 }
